@@ -1,10 +1,11 @@
+import React from "react";
 import { Repo } from "../types";
 
 interface RepoCardProps {
   repo: Repo;
 }
 
-const RepoCard = ({ repo }: RepoCardProps) => {
+const RepoCard: React.FC<RepoCardProps> = ({ repo }) => {
   return (
     <article>
       <h2>

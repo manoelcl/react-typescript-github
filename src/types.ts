@@ -1,14 +1,14 @@
 export interface User {
-  id: Number;
+  id: number;
   login: string;
   node_id: string;
   avatar_url: string;
   gravatar_id: string;
   url: string;
   html_url: string;
-  followers: Number;
+  followers: number;
   followers_url: string;
-  following: Number;
+  following: number;
   following_url: string;
   gists_url: string;
   starred_url: string;
@@ -18,7 +18,7 @@ export interface User {
   events_url: string;
   received_events_url: string;
   type: string;
-  site_admin: Boolean;
+  site_admin: boolean;
   name: string;
   company: string;
   blog: string;
@@ -27,18 +27,18 @@ export interface User {
   hireable: any;
   bio: string;
   twitter_username: string;
-  public_repos: Number;
-  public_gists: Number;
+  public_repos: number;
+  public_gists: number;
   created_at: Date;
   updated_at: Date;
 }
 
 export interface Repo {
-  id: Number;
+  id: number;
   node_id: string;
   name: string;
   full_name: string;
-  private: Boolean;
+  private: boolean;
   owner: any;
   html_url: string;
   description: null;
@@ -88,28 +88,28 @@ export interface Repo {
   clone_url: string;
   svn_url: string;
   homepage: string;
-  size: Number;
-  stargazers_count: Number;
-  watchers_count: Number;
+  size: number;
+  stargazers_count: number;
+  watchers_count: number;
   language: string;
   has_issues: boolean;
   has_projects: boolean;
   has_downloads: boolean;
   has_wiki: boolean;
   has_pages: boolean;
-  forks_count: Number;
+  forks_count: number;
   mirror_url: string;
   archived: boolean;
   disabled: boolean;
-  open_issues_count: Number;
+  open_issues_count: number;
   license: any;
   allow_forking: boolean;
   is_template: boolean;
   web_commit_signoff_required: boolean;
   topics: [];
   visibility: string;
-  forks: Number;
-  open_issues: Number;
-  watchers: Number;
+  forks: number;
+  open_issues: number;
+  watchers: number;
   default_branch: string;
 }
