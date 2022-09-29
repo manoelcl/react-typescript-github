@@ -25,6 +25,8 @@ img {
 }
 
 h1 {
+  color: red;
+  text-shadow: 4px 4px white;
   position: absolute;
   top: 0;
   left: 50%;

@@ -41,26 +41,27 @@ function App() {
       <div className="canvas">
         <Canvas
           camera={{ fov: 75, position: [0, 0, 5] }}
-          style={{ backgroundImage: "linear-gradient(cyan, white)" }}
+          style={{ backgroundImage: "linear-gradient(#87ceeb , white)" }}
           shadows
         >
           <fog attach="fog" color={"#ffeeee"} near={1.5} far={25}></fog>
-          <ambientLight intensity={0.1} />
+          <ambientLight intensity={0.5} />
           <directionalLight
             castShadow
-            position={[12, 12, 12]}
+            position={[6, 12, 6]}
             color={"#ffffff"}
-            intensity={1}
+            intensity={0.5}
             shadow-mapSize-height={512}
             shadow-mapSize-width={512}
-            shadow-camera-left={-2}
-            shadow-camera-right={2}
-            shadow-camera-bottom={-2}
-            shadow-camera-top={2}
-            shadow-bias={-0.00001}
+            shadow-camera-left={-6}
+            shadow-camera-right={6}
+            shadow-camera-bottom={-6}
+            shadow-camera-top={6}
+            shadow-bias={-0.0001}
           />
 
           {repos ? <UserIsland rep={repos} /> : null}
+
           <OrbitControls />
         </Canvas>
         <form onSubmit={(e) => e.preventDefault()}>
