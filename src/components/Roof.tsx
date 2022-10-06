@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { MeshStandardMaterial } from "three";
+import { Vector3 } from "three";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -12,13 +12,18 @@ type GLTFResult = GLTF & {
   };
 };
 
-function Roof(props: JSX.IntrinsicElements["group"]) {
+interface RoofProps {
+  color: string;
+  position: Vector3;
+}
+
+function Roof({ color, position }: RoofProps): JSX.Element {
   const { nodes, materials } = useGLTF("/models/roof.glb") as GLTFResult;
 
   return (
-    <group {...props} dispose={null}>
+    <group position={position} dispose={null}>
       <mesh geometry={nodes.Cube.geometry}>
-        <meshStandardMaterial roughness={0} emissive={"cyan"} color={"cyan"} />
+        <meshStandardMaterial roughness={0} color={color} />
       </mesh>
     </group>
   );

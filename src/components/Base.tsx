@@ -19,7 +19,7 @@ function Base(props: JSX.IntrinsicElements["group"]) {
         receiveShadow
         geometry={nodes.Circle.geometry}
         material={nodes.Circle.material}
-      />
+      ></mesh>
     </group>
   );
 }

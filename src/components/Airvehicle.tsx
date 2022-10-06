@@ -6,14 +6,10 @@ import { useFrame } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Cube: THREE.Mesh;
-    Cube_1: THREE.Mesh;
-    Cube_2: THREE.Mesh;
+    Zeppelin: THREE.Mesh;
   };
   materials: {
-    Material: THREE.MeshStandardMaterial;
-    ["Material.002"]: THREE.MeshStandardMaterial;
-    ["Material.001"]: THREE.MeshStandardMaterial;
+    base: THREE.MeshStandardMaterial;
   };
 };
 
@@ -37,26 +33,14 @@ function Airvehicle({ height, distance }: AirvehicleProps) {
 
   return (
     <group position={[0, height, 0]} ref={centerRotation}>
-      <group position={[distance, 0, 0]} scale={0.333} dispose={null}>
-        <mesh
-          receiveShadow
-          castShadow
-          geometry={nodes.Cube.geometry}
-          material={materials.Material}
-        />
-        <mesh
-          receiveShadow
-          castShadow
-          geometry={nodes.Cube_1.geometry}
-          material={materials["Material.002"]}
-        />
-        <mesh
-          receiveShadow
-          castShadow
-          geometry={nodes.Cube_2.geometry}
-          material={materials["Material.001"]}
-        />
-      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        position={[distance, 0, 0]}
+        scale={0.333}
+        geometry={nodes.Zeppelin.geometry}
+        material={materials.base}
+      />
     </group>
   );
 }
