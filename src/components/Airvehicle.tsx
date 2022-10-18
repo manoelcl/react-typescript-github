@@ -3,6 +3,8 @@ import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
+import useImportModels from "../services/useImportModels";
+import { Material } from "three";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -19,7 +21,7 @@ interface AirvehicleProps {
 }
 
 function Airvehicle({ height, distance }: AirvehicleProps) {
-  const { nodes, materials } = useGLTF("/models/airvehicle.glb") as GLTFResult;
+  const { airvehicle } = useImportModels();
 
   const centerRotation = useRef<THREE.Group>(null);
 
@@ -38,8 +40,8 @@ function Airvehicle({ height, distance }: AirvehicleProps) {
         receiveShadow
         position={[distance, 0, 0]}
         scale={0.333}
-        geometry={nodes.Zeppelin.geometry}
-        material={materials.base}
+        geometry={airvehicle.nodes.Zeppelin.geometry}
+        material={airvehicle.materials.base || null}
       />
     </group>
   );

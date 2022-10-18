@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { Vector3 } from "three";
+import { TextureLoader, Vector3 } from "three";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -50,6 +50,10 @@ const colors = {
 export function Street({ cellType, position, index }: StreetProps) {
   const { nodes } = useGLTF("/models/street.glb") as GLTFResult;
   console.log(cellType, position, index);
+  const textureLoader = new TextureLoader();
+  const texture = textureLoader.load("/textures/baseStreet.png");
+  texture.wrapS = THREE.RepeatWrapping;
+
   return (
     <group position={position} dispose={null}>
       <mesh
@@ -61,12 +65,13 @@ export function Street({ cellType, position, index }: StreetProps) {
         // colors[cellType as keyof typeof nodes]
         material={
           new THREE.MeshStandardMaterial({
-            color: new THREE.Color(
-              `rgb(${colors[cellType as keyof typeof nodes]},${Math.min(
-                Math.max(index * 0, 0),
-                255
-              )},${colors[cellType as keyof typeof nodes]})`
-            ),
+            map: texture,
+            // color: new THREE.Color(
+            //   `rgb(${colors[cellType as keyof typeof nodes]},${Math.min(
+            //     Math.max(index * 0, 0),
+            //     255
+            //   )},${colors[cellType as keyof typeof nodes]})`
+            // ),
           })
         }
       />
